@@ -209,7 +209,7 @@ fn test_statistics_calculation() {
     assert_eq!(stats.total_work_minutes, 75);
     assert_eq!(stats.total_break_minutes, 5);
     assert_eq!(stats.cancelled_sessions, 1);
-    assert_eq!(stats.current_streak, 0); // Streak broken by cancelled session
+    assert_eq!(stats.current_streak, 0); // Streak reset by cancelled session at end
 }
 
 #[test]

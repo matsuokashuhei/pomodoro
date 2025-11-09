@@ -7,10 +7,13 @@ use crate::services::notifier::NotificationService;
 use chrono::Utc;
 use std::sync::Arc;
 
+pub const DEFAULT_LONG_BREAK_INTERVAL: i32 = 4;
+
 pub struct TimerService {
     db: Arc<DatabaseService>,
     notifier: NotificationService,
     audio: AudioService,
+    long_break_interval: i32,
 }
 
 impl TimerService {
@@ -25,6 +28,9 @@ impl TimerService {
             db,
             notifier,
             audio,
+            long_break_interval: preferences
+                .long_break_interval
+                .unwrap_or(DEFAULT_LONG_BREAK_INTERVAL),
         }
     }
 
@@ -88,7 +94,7 @@ impl TimerService {
 
                 // Check if long break is due
                 let completed_count = self.db.count_completed_work_sessions_today()?;
-                if completed_count % 4 == 0 && completed_count > 0 {
+                if completed_count % self.long_break_interval == 0 && completed_count > 0 {
                     self.notifier.send_long_break_suggestion()?;
                 }
             }
@@ -157,7 +163,7 @@ impl TimerService {
 
     pub fn determine_break_type(&self) -> anyhow::Result<SessionType> {
         let count = self.count_completed_work_sessions()?;
-        if count > 0 && count % 4 == 0 {
+        if count > 0 && count % self.long_break_interval == 0 {
             Ok(SessionType::LongBreak)
         } else {
             Ok(SessionType::ShortBreak)

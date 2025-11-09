@@ -124,8 +124,14 @@ impl DatabaseService {
 
     pub fn get_sessions_by_date(&self, date: DateTime<Utc>) -> anyhow::Result<Vec<TimerSession>> {
         let conn = self.get_connection()?;
-        let start_of_day = date.date_naive().and_hms_opt(0, 0, 0).unwrap();
-        let end_of_day = date.date_naive().and_hms_opt(23, 59, 59).unwrap();
+        let start_of_day = date
+            .date_naive()
+            .and_hms_opt(0, 0, 0)
+            .ok_or_else(|| anyhow::anyhow!("Invalid start of day timestamp"))?;
+        let end_of_day = date
+            .date_naive()
+            .and_hms_opt(23, 59, 59)
+            .ok_or_else(|| anyhow::anyhow!("Invalid end of day timestamp"))?;
 
         let mut stmt = conn.prepare(
             "SELECT id, session_type, status, duration_minutes, started_at, completed_at,

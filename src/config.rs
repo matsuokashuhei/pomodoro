@@ -11,6 +11,7 @@ pub struct UserPreferences {
     pub work_minutes: Option<i32>,
     pub short_break_minutes: Option<i32>,
     pub long_break_minutes: Option<i32>,
+    pub long_break_interval: Option<i32>, // Number of work sessions before long break
 }
 
 impl Default for UserPreferences {
@@ -23,6 +24,7 @@ impl Default for UserPreferences {
             work_minutes: None,
             short_break_minutes: None,
             long_break_minutes: None,
+            long_break_interval: None, // Default to 4 if not specified
         }
     }
 }
@@ -63,10 +65,28 @@ impl UserPreferences {
                 anyhow::bail!("long_break_minutes must be positive");
             }
         }
+        if let Some(interval) = self.long_break_interval {
+            if interval <= 0 {
+                anyhow::bail!("long_break_interval must be positive");
+            }
+        }
         if let Some(ref path) = self.custom_sound_path {
             let sound_path = PathBuf::from(path);
             if !sound_path.exists() {
                 anyhow::bail!("custom sound file does not exist: {}", path);
+            }
+            // Validate audio file format
+            let extension = sound_path.extension().and_then(|e| e.to_str());
+            let supported_formats = ["mp3", "wav", "ogg", "flac", "m4a"];
+            if let Some(ext) = extension {
+                if !supported_formats.contains(&ext.to_lowercase().as_str()) {
+                    anyhow::bail!(
+                        "unsupported audio format: {}. Supported formats: mp3, wav, ogg, flac, m4a",
+                        ext
+                    );
+                }
+            } else {
+                anyhow::bail!("custom sound file must have a valid audio extension");
             }
         }
         Ok(())

@@ -38,6 +38,7 @@ impl UserStatistics {
                         SessionType::ShortBreak | SessionType::LongBreak => {
                             stats.completed_break_sessions += 1;
                             stats.total_break_minutes += session.duration_minutes;
+                            // Break sessions don't break the streak, only count work sessions
                         }
                     }
                 }
@@ -45,8 +46,12 @@ impl UserStatistics {
                     stats.cancelled_sessions += 1;
                     consecutive_completed = 0;
                 }
-                _ => {
-                    consecutive_completed = 0;
+                SessionStatus::Active | SessionStatus::Paused => {
+                    // Active or paused break sessions don't break the streak
+                    // Only work sessions that are incomplete reset the streak
+                    if session.session_type == SessionType::Work {
+                        consecutive_completed = 0;
+                    }
                 }
             }
         }

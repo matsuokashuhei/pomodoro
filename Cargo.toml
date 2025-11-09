@@ -7,7 +7,7 @@ rust-version = "1.75"
 [dependencies]
 clap = { version = "4.5", features = ["derive"] }
 rusqlite = { version = "0.32", features = ["bundled"] }
-tokio = { version = "1.40", features = ["full"] }
+tokio = { version = "1.40", features = ["rt", "time", "macros"] }
 indicatif = "0.17"
 notify-rust = "4.11"
 rodio = "0.19"

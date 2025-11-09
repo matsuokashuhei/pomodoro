@@ -285,6 +285,9 @@ pub fn handle_config(
         if let Some(long) = preferences.long_break_minutes {
             println!("│  long_break_minutes: {:>14} │", long);
         }
+        if let Some(interval) = preferences.long_break_interval {
+            println!("│  long_break_interval: {:>13} │", interval);
+        }
         println!("└─────────────────────────────────────┘\n");
         return Ok(());
     }
@@ -305,6 +308,10 @@ pub fn handle_config(
                 .unwrap_or_default(),
             "long_break_minutes" => preferences
                 .long_break_minutes
+                .map(|v| v.to_string())
+                .unwrap_or_default(),
+            "long_break_interval" => preferences
+                .long_break_interval
                 .map(|v| v.to_string())
                 .unwrap_or_default(),
             _ => anyhow::bail!("Unknown configuration key: {}", key),
@@ -339,6 +346,9 @@ pub fn handle_config(
             }
             "long_break_minutes" => {
                 preferences.long_break_minutes = Some(value.parse()?);
+            }
+            "long_break_interval" => {
+                preferences.long_break_interval = Some(value.parse()?);
             }
             _ => anyhow::bail!("Unknown configuration key: {}", key),
         }
