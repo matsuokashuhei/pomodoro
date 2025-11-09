@@ -1,0 +1,6 @@
+[target.'cfg(all())']
+rustflags = ["-D", "warnings"]
+
+[build]
+# Enable clippy on build
+# rustc-wrapper = "clippy-driver"
