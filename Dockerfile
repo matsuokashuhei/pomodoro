@@ -12,7 +12,7 @@ RUN cargo build --release
 FROM base AS runtime
 RUN <<EOT
 apt-get update
-apt-get install -y --no-install-recommends ca-certificates
+apt-get install -y --no-install-recommends ca-certificates libasound2-dev libdbus-1-dev
 update-ca-certificates
 rm -rf /var/lib/apt/lists/*
 EOT

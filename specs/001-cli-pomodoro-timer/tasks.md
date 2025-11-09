@@ -26,12 +26,12 @@ Single Rust project structure:
 
 **Purpose**: Project initialization and basic Rust project structure
 
-- [ ] T001 Create project directory structure: src/{models,services,cli}/, tests/integration/, migrations/
-- [ ] T002 Initialize Cargo.toml with dependencies: clap, rusqlite, tokio, indicatif, notify-rust, rodio, chrono, serde, serde_json, dirs, anyhow
-- [ ] T003 [P] Configure Cargo.toml release profile for optimization (opt-level="z", lto=true, strip=true)
-- [ ] T004 [P] Create .gitignore for Rust project (target/, Cargo.lock for libraries)
-- [ ] T005 [P] Setup rustfmt.toml for code formatting configuration
-- [ ] T006 [P] Setup clippy configuration in .cargo/config.toml
+- [x] T001 Create project directory structure: src/{models,services,cli}/, tests/integration/, migrations/
+- [x] T002 Initialize Cargo.toml with dependencies: clap, rusqlite, tokio, indicatif, notify-rust, rodio, chrono, serde, serde_json, dirs, anyhow
+- [x] T003 [P] Configure Cargo.toml release profile for optimization (opt-level="z", lto=true, strip=true)
+- [x] T004 [P] Create .gitignore for Rust project (target/, Cargo.lock for libraries)
+- [x] T005 [P] Setup rustfmt.toml for code formatting configuration
+- [x] T006 [P] Setup clippy configuration in .cargo/config.toml
 
 ---
 
@@ -41,21 +41,21 @@ Single Rust project structure:
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T007 Create database migration system in migrations/001_initial_schema.sql with sessions, timer_state, preferences tables
-- [ ] T008 [P] Create TimerSession model in src/models/session.rs with SessionType and SessionStatus enums
-- [ ] T009 [P] Create TimerPreset model in src/models/preset.rs with PresetType enum and standard/short/long factory methods
-- [ ] T010 [P] Create TimerState model in src/models/session.rs with TimerStatus enum and state management methods
-- [ ] T011 [P] Create UserStatistics model in src/models/statistics.rs with calculation logic from sessions
-- [ ] T012 [P] Create UserPreferences model in src/config.rs with default implementation and JSON serialization
-- [ ] T013 Create DatabaseService in src/services/database.rs with connection management and migration runner
-- [ ] T014 Implement database CRUD operations in src/services/database.rs for sessions table
-- [ ] T015 Implement database operations in src/services/database.rs for timer_state singleton management
-- [ ] T016 Implement database operations in src/services/database.rs for preferences key-value storage
-- [ ] T017 [P] Create NotificationService in src/services/notifier.rs using notify-rust crate
-- [ ] T018 [P] Create AudioService in src/services/audio.rs using rodio crate with embedded default sound
-- [ ] T019 Create CLI argument parser structure in src/main.rs using clap derive macros with Commands enum
-- [ ] T020 Create module declarations in src/lib.rs to export models and services for testing
-- [ ] T021 [P] Setup error handling with anyhow in src/main.rs and context propagation
+- [x] T007 Create database migration system in migrations/001_initial_schema.sql with sessions, timer_state, preferences tables
+- [x] T008 [P] Create TimerSession model in src/models/session.rs with SessionType and SessionStatus enums
+- [x] T009 [P] Create TimerPreset model in src/models/preset.rs with PresetType enum and standard/short/long factory methods
+- [x] T010 [P] Create TimerState model in src/models/session.rs with TimerStatus enum and state management methods
+- [x] T011 [P] Create UserStatistics model in src/models/statistics.rs with calculation logic from sessions
+- [x] T012 [P] Create UserPreferences model in src/config.rs with default implementation and JSON serialization
+- [x] T013 Create DatabaseService in src/services/database.rs with connection management and migration runner
+- [x] T014 Implement database CRUD operations in src/services/database.rs for sessions table
+- [x] T015 Implement database operations in src/services/database.rs for timer_state singleton management
+- [x] T016 Implement database operations in src/services/database.rs for preferences key-value storage
+- [x] T017 [P] Create NotificationService in src/services/notifier.rs using notify-rust crate
+- [x] T018 [P] Create AudioService in src/services/audio.rs using rodio crate with embedded default sound
+- [x] T019 Create CLI argument parser structure in src/main.rs using clap derive macros with Commands enum
+- [x] T020 Create module declarations in src/lib.rs to export models and services for testing
+- [x] T021 [P] Setup error handling with anyhow in src/main.rs and context propagation
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -69,18 +69,18 @@ Single Rust project structure:
 
 ### Implementation for User Story 1
 
-- [ ] T022 [P] [US1] Implement DisplayService in src/cli/display.rs with progress bar formatting using indicatif
-- [ ] T023 [P] [US1] Implement time formatting functions in src/cli/display.rs for MM:SS format
-- [ ] T024 [US1] Implement TimerService::start_session() in src/services/timer.rs to create session and timer_state records
-- [ ] T025 [US1] Implement TimerService::check_active_timer() in src/services/timer.rs to prevent concurrent timers
-- [ ] T026 [US1] Implement start command handler in src/cli/commands.rs for `pomodoro start` with type and preset options
-- [ ] T027 [US1] Wire up start command in src/main.rs to call command handler
-- [ ] T028 [US1] Implement status command handler in src/cli/commands.rs for `pomodoro status` with progress display
-- [ ] T029 [US1] Wire up status command in src/main.rs to call status handler
-- [ ] T030 [US1] Implement TimerService::calculate_remaining_time() in src/services/timer.rs for state-based time calculation
-- [ ] T031 [US1] Implement TimerService::complete_session() in src/services/timer.rs to update session and send notification
-- [ ] T032 [US1] Add completion check in status command to detect expired timers and trigger notifications
-- [ ] T033 [US1] Add sound alert integration in TimerService::complete_session() when sound_enabled=true
+- [x] T022 [P] [US1] Implement DisplayService in src/cli/display.rs with progress bar formatting using indicatif
+- [x] T023 [P] [US1] Implement time formatting functions in src/cli/display.rs for MM:SS format
+- [x] T024 [US1] Implement TimerService::start_session() in src/services/timer.rs to create session and timer_state records
+- [x] T025 [US1] Implement TimerService::check_active_timer() in src/services/timer.rs to prevent concurrent timers
+- [x] T026 [US1] Implement start command handler in src/cli/commands.rs for `pomodoro start` with type and preset options
+- [x] T027 [US1] Wire up start command in src/main.rs to call command handler
+- [x] T028 [US1] Implement status command handler in src/cli/commands.rs for `pomodoro status` with progress display
+- [x] T029 [US1] Wire up status command in src/main.rs to call status handler
+- [x] T030 [US1] Implement TimerService::calculate_remaining_time() in src/services/timer.rs for state-based time calculation
+- [x] T031 [US1] Implement TimerService::complete_session() in src/services/timer.rs to update session and send notification
+- [x] T032 [US1] Add completion check in status command to detect expired timers and trigger notifications
+- [x] T033 [US1] Add sound alert integration in TimerService::complete_session() when sound_enabled=true
 
 **Checkpoint**: At this point, User Story 1 should be fully functional - users can start a timer, check status, and receive notifications
 
@@ -94,12 +94,12 @@ Single Rust project structure:
 
 ### Implementation for User Story 2
 
-- [ ] T034 [US2] Implement TimerService::count_completed_work_sessions() in src/services/timer.rs to query today's completed work sessions
-- [ ] T035 [US2] Implement TimerService::determine_break_type() in src/services/timer.rs with long break logic (every 4 sessions)
-- [ ] T036 [US2] Add break prompt logic to TimerService::complete_session() in src/services/timer.rs when work session completes
-- [ ] T037 [US2] Extend start command handler in src/cli/commands.rs to support --type break option
-- [ ] T038 [US2] Add break session notifications in src/services/notifier.rs with appropriate messages
-- [ ] T039 [US2] Update status display in src/cli/display.rs to distinguish work vs break sessions with icons
+- [x] T034 [US2] Implement TimerService::count_completed_work_sessions() in src/services/timer.rs to query today's completed work sessions
+- [x] T035 [US2] Implement TimerService::determine_break_type() in src/services/timer.rs with long break logic (every 4 sessions)
+- [x] T036 [US2] Add break prompt logic to TimerService::complete_session() in src/services/timer.rs when work session completes
+- [x] T037 [US2] Extend start command handler in src/cli/commands.rs to support --type break option
+- [x] T038 [US2] Add break session notifications in src/services/notifier.rs with appropriate messages
+- [x] T039 [US2] Update status display in src/cli/display.rs to distinguish work vs break sessions with icons
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently - full Pomodoro cycle with breaks
 
@@ -113,14 +113,14 @@ Single Rust project structure:
 
 ### Implementation for User Story 3
 
-- [ ] T040 [P] [US3] Implement TimerService::pause_session() in src/services/timer.rs to update timer_state status
-- [ ] T041 [P] [US3] Implement TimerService::resume_session() in src/services/timer.rs to update timer_state status
-- [ ] T042 [US3] Implement pause command handler in src/cli/commands.rs for `pomodoro pause`
-- [ ] T043 [US3] Implement resume command handler in src/cli/commands.rs for `pomodoro resume`
-- [ ] T044 [US3] Wire up pause command in src/main.rs to call pause handler
-- [ ] T045 [US3] Wire up resume command in src/main.rs to call resume handler
-- [ ] T046 [US3] Update status display in src/cli/display.rs to show paused state with ⏸️ icon
-- [ ] T047 [US3] Add error handling in pause/resume handlers for invalid timer states
+- [x] T040 [P] [US3] Implement TimerService::pause_session() in src/services/timer.rs to update timer_state status
+- [x] T041 [P] [US3] Implement TimerService::resume_session() in src/services/timer.rs to update timer_state status
+- [x] T042 [US3] Implement pause command handler in src/cli/commands.rs for `pomodoro pause`
+- [x] T043 [US3] Implement resume command handler in src/cli/commands.rs for `pomodoro resume`
+- [x] T044 [US3] Wire up pause command in src/main.rs to call pause handler
+- [x] T045 [US3] Wire up resume command in src/main.rs to call resume handler
+- [x] T046 [US3] Update status display in src/cli/display.rs to show paused state with ⏸️ icon
+- [x] T047 [US3] Add error handling in pause/resume handlers for invalid timer states
 
 **Checkpoint**: All pause/resume functionality should work independently
 
@@ -134,11 +134,11 @@ Single Rust project structure:
 
 ### Implementation for User Story 4
 
-- [ ] T048 [US4] Implement TimerService::cancel_session() in src/services/timer.rs to update session status and delete timer_state
-- [ ] T049 [US4] Implement cancel command handler in src/cli/commands.rs for `pomodoro cancel` with confirmation prompt
-- [ ] T050 [US4] Wire up cancel command in src/main.rs to call cancel handler
-- [ ] T051 [US4] Add --force flag support in cancel command handler to skip confirmation
-- [ ] T052 [US4] Ensure cancelled sessions are excluded from statistics calculations in src/models/statistics.rs
+- [x] T048 [US4] Implement TimerService::cancel_session() in src/services/timer.rs to update session status and delete timer_state
+- [x] T049 [US4] Implement cancel command handler in src/cli/commands.rs for `pomodoro cancel` with confirmation prompt
+- [x] T050 [US4] Wire up cancel command in src/main.rs to call cancel handler
+- [x] T051 [US4] Add --force flag support in cancel command handler to skip confirmation
+- [x] T052 [US4] Ensure cancelled sessions are excluded from statistics calculations in src/models/statistics.rs
 
 **Checkpoint**: Cancel functionality should work independently
 
@@ -152,14 +152,14 @@ Single Rust project structure:
 
 ### Implementation for User Story 5
 
-- [ ] T053 [P] [US5] Implement DatabaseService::get_sessions_by_date() in src/services/database.rs to query sessions for a specific date
-- [ ] T054 [P] [US5] Implement UserStatistics::calculate_from_sessions() logic in src/models/statistics.rs with all metrics
-- [ ] T055 [P] [US5] Implement streak calculation in src/models/statistics.rs for consecutive completed work sessions
-- [ ] T056 [US5] Implement stats command handler in src/cli/commands.rs for `pomodoro stats` with --date option
-- [ ] T057 [US5] Wire up stats command in src/main.rs to call stats handler
-- [ ] T058 [US5] Create statistics display formatting in src/cli/display.rs with recent sessions list
-- [ ] T059 [US5] Add --json flag support in stats command handler for machine-readable output
-- [ ] T060 [US5] Add --json flag support in status command handler for machine-readable output
+- [x] T053 [P] [US5] Implement DatabaseService::get_sessions_by_date() in src/services/database.rs to query sessions for a specific date
+- [x] T054 [P] [US5] Implement UserStatistics::calculate_from_sessions() logic in src/models/statistics.rs with all metrics
+- [x] T055 [P] [US5] Implement streak calculation in src/models/statistics.rs for consecutive completed work sessions
+- [x] T056 [US5] Implement stats command handler in src/cli/commands.rs for `pomodoro stats` with --date option
+- [x] T057 [US5] Wire up stats command in src/main.rs to call stats handler
+- [x] T058 [US5] Create statistics display formatting in src/cli/display.rs with recent sessions list
+- [x] T059 [US5] Add --json flag support in stats command handler for machine-readable output
+- [x] T060 [US5] Add --json flag support in status command handler for machine-readable output
 
 **Checkpoint**: All statistics and reporting functionality should work independently
 
@@ -173,13 +173,13 @@ Single Rust project structure:
 
 ### Implementation for Configuration
 
-- [ ] T061 [P] Implement UserPreferences::load() in src/config.rs to read from ~/.local/share/pomodoro/config.json
-- [ ] T062 [P] Implement UserPreferences::save() in src/config.rs to write JSON configuration
-- [ ] T063 Implement config command handler in src/cli/commands.rs for `pomodoro config` with --list, --get, --set options
-- [ ] T064 Wire up config command in src/main.rs to call config handler
-- [ ] T065 Add configuration validation in src/config.rs for preset values and file paths
-- [ ] T066 Integrate UserPreferences into start command to use default preset from config
-- [ ] T067 Add custom sound file loading in src/services/audio.rs when custom_sound_path is configured
+- [x] T061 [P] Implement UserPreferences::load() in src/config.rs to read from ~/.local/share/pomodoro/config.json
+- [x] T062 [P] Implement UserPreferences::save() in src/config.rs to write JSON configuration
+- [x] T063 Implement config command handler in src/cli/commands.rs for `pomodoro config` with --list, --get, --set options
+- [x] T064 Wire up config command in src/main.rs to call config handler
+- [x] T065 Add configuration validation in src/config.rs for preset values and file paths
+- [x] T066 Integrate UserPreferences into start command to use default preset from config
+- [x] T067 Add custom sound file loading in src/services/audio.rs when custom_sound_path is configured
 
 **Checkpoint**: Configuration management should work independently
 
@@ -189,24 +189,24 @@ Single Rust project structure:
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T068 [P] Add comprehensive error messages for all error cases in src/cli/commands.rs per contracts/cli-commands.md
-- [ ] T069 [P] Add --help documentation for all commands using clap attributes
-- [ ] T070 [P] Add --version flag in src/main.rs with version from Cargo.toml
-- [ ] T071 [P] Add --verbose flag support with RUST_LOG environment variable configuration
-- [ ] T072 [P] Add environment variable support for POMODORO_DB_PATH and POMODORO_CONFIG_PATH
-- [ ] T073 [P] Create integration test in tests/integration/timer_flow.rs for complete work session flow
-- [ ] T074 [P] Create integration test in tests/integration/persistence.rs for state survival across CLI invocations
-- [ ] T075 [P] Create integration test in tests/integration/commands.rs for all CLI commands
-- [ ] T076 [P] Add unit tests in src/models/session.rs for TimerState tick and pause/resume logic
-- [ ] T077 [P] Add unit tests in src/models/preset.rs for preset factory methods
-- [ ] T078 [P] Add unit tests in src/models/statistics.rs for statistics calculation
-- [ ] T079 [P] Create README.md with installation instructions and usage examples
-- [ ] T080 [P] Add cross-platform path handling using dirs crate in src/config.rs and src/services/database.rs
-- [ ] T081 Add graceful error handling for missing audio/notification dependencies
-- [ ] T082 Run quickstart.md validation: build project, run all commands, verify outputs
-- [ ] T083 Run cargo fmt to format all code
-- [ ] T084 Run cargo clippy -- -D warnings to ensure no linting issues
-- [ ] T085 Create release build with cargo build --release and verify binary size <5MB
+- [x] T068 [P] Add comprehensive error messages for all error cases in src/cli/commands.rs per contracts/cli-commands.md
+- [x] T069 [P] Add --help documentation for all commands using clap attributes
+- [x] T070 [P] Add --version flag in src/main.rs with version from Cargo.toml
+- [x] T071 [P] Add --verbose flag support with RUST_LOG environment variable configuration
+- [x] T072 [P] Add environment variable support for POMODORO_DB_PATH and POMODORO_CONFIG_PATH
+- [x] T073 [P] Create integration test in tests/integration/timer_flow.rs for complete work session flow
+- [x] T074 [P] Create integration test in tests/integration/persistence.rs for state survival across CLI invocations
+- [x] T075 [P] Create integration test in tests/integration/commands.rs for all CLI commands
+- [x] T076 [P] Add unit tests in src/models/session.rs for TimerState tick and pause/resume logic
+- [x] T077 [P] Add unit tests in src/models/preset.rs for preset factory methods
+- [x] T078 [P] Add unit tests in src/models/statistics.rs for statistics calculation
+- [x] T079 [P] Create README.md with installation instructions and usage examples
+- [x] T080 [P] Add cross-platform path handling using dirs crate in src/config.rs and src/services/database.rs
+- [x] T081 Add graceful error handling for missing audio/notification dependencies
+- [x] T082 Run quickstart.md validation: build project, run all commands, verify outputs
+- [x] T083 Run cargo fmt to format all code
+- [x] T084 Run cargo clippy -- -D warnings to ensure no linting issues
+- [x] T085 Create release build with cargo build --release and verify binary size <5MB
 
 ---
 
